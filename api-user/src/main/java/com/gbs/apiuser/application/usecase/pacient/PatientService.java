@@ -1,22 +1,22 @@
 package com.gbs.apiuser.application.usecase.pacient;
 
 import com.gbs.apiuser.api.dto.pacient.PacientRequest;
-import com.gbs.apiuser.api.dto.pacient.PacientResponse;
+import com.gbs.apiuser.api.dto.pacient.PatientResponse;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.validation.annotation.Validated;
 
 @Validated
-public interface PacientService{
+public interface PatientService {
 
-    PacientResponse findById(final Long id);
+    PatientResponse findById(final Long id);
 
-    Page<PacientResponse> findAll(Pageable pageable);
+    Page<PatientResponse> findAll(Pageable pageable);
     void delete(final Long id);
 
-    PacientResponse save(final @Valid PacientRequest request);
+    PatientResponse save(final @Valid PacientRequest request);
 
-    PacientResponse update(final Long id, @Valid PacientRequest request);
+    PatientResponse update(final Long id, @Valid PacientRequest request);
 
 }

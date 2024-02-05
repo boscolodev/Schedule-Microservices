@@ -1,8 +1,8 @@
 package com.gbs.apiuser.api.controller;
 
 import com.gbs.apiuser.api.dto.pacient.PacientRequest;
-import com.gbs.apiuser.api.dto.pacient.PacientResponse;
-import com.gbs.apiuser.application.usecase.pacient.PacientService;
+import com.gbs.apiuser.api.dto.pacient.PatientResponse;
+import com.gbs.apiuser.application.usecase.pacient.PatientService;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping(value = "/api/v1/pacients")
 @RequiredArgsConstructor
-public class PacientController {
+public class PatientController {
 
-    private final PacientService service;
+    private final PatientService service;
 
     @GetMapping
-    public Page<PacientResponse> findAll(final Pageable pageable){
+    public Page<PatientResponse> findAll(final Pageable pageable){
         return service.findAll(pageable);
     }
 
     @GetMapping(value = "/{id}")
-    public PacientResponse findById(@PathVariable final Long id){
+    public PatientResponse findById(@PathVariable final Long id){
         return service.findById(id);
     }
 
@@ -35,13 +35,13 @@ public class PacientController {
     }
 
     @PutMapping(value = "/{id}")
-    public PacientResponse update(@PathVariable final Long id, @RequestBody @Valid final PacientRequest request){
+    public PatientResponse update(@PathVariable final Long id, @RequestBody @Valid final PacientRequest request){
         return service.update(id, request);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public PacientResponse insert(@RequestBody @Valid final PacientRequest request){
+    public PatientResponse insert(@RequestBody @Valid final PacientRequest request){
         return service.save(request);
     }
 

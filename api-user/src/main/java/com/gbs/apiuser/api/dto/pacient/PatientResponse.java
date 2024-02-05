@@ -16,7 +16,7 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class PacientResponse implements Serializable {
+public class PatientResponse implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;

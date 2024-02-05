@@ -2,11 +2,7 @@ package com.gbs.apiuser.api.controller;
 
 import com.gbs.apiuser.api.dto.doctor.DoctorRequest;
 import com.gbs.apiuser.api.dto.doctor.DoctorResponse;
-import com.gbs.apiuser.api.dto.pacient.PacientRequest;
-import com.gbs.apiuser.api.dto.pacient.PacientResponse;
 import com.gbs.apiuser.application.usecase.doctor.DoctorService;
-import com.gbs.apiuser.application.usecase.pacient.PacientService;
-import com.gbs.apiuser.model.entities.Doctor;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

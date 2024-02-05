@@ -2,9 +2,6 @@ package com.gbs.apiuser.application.usecase.doctor;
 
 import com.gbs.apiuser.api.dto.doctor.DoctorRequest;
 import com.gbs.apiuser.api.dto.doctor.DoctorResponse;
-import com.gbs.apiuser.api.dto.pacient.PacientRequest;
-import com.gbs.apiuser.api.dto.pacient.PacientResponse;
-import com.gbs.apiuser.model.entities.Doctor;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

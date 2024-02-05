@@ -1,7 +1,7 @@
 package com.gbs.apiuser.application.usecase.pacient;
 
 import com.gbs.apiuser.api.dto.pacient.PacientRequest;
-import com.gbs.apiuser.api.dto.pacient.PacientResponse;
+import com.gbs.apiuser.api.dto.pacient.PatientResponse;
 import com.gbs.apiuser.infrastructure.pacient.PacientCrudService;
 import com.gbs.apiuser.model.entities.Address;
 import com.gbs.apiuser.model.entities.Pacient;
@@ -19,19 +19,19 @@ import java.util.Objects;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class PacientServiceImpl implements PacientService {
+public class PatientServiceImpl implements PatientService {
 
     private final PacientCrudService service;
     private final RestApi restApi;
 
     @Override
-    public PacientResponse findById(Long id) {
-        return Mapper.converte(service.findById(id), PacientResponse.class);
+    public PatientResponse findById(Long id) {
+        return Mapper.converte(service.findById(id), PatientResponse.class);
     }
 
     @Override
-    public Page<PacientResponse> findAll(Pageable pageable) {
-        return service.findAll(pageable).map(row -> Mapper.converte(row, PacientResponse.class));
+    public Page<PatientResponse> findAll(Pageable pageable) {
+        return service.findAll(pageable).map(row -> Mapper.converte(row, PatientResponse.class));
     }
 
     @Override
@@ -40,7 +40,7 @@ public class PacientServiceImpl implements PacientService {
     }
 
     @Override
-    public PacientResponse update(Long id, PacientRequest request) {
+    public PatientResponse update(Long id, PacientRequest request) {
 
         Pacient pacient = service.findById(id);
         Mapper.copyEntity(request, pacient);
@@ -50,16 +50,16 @@ public class PacientServiceImpl implements PacientService {
             validateDatabaseEmailIntegrity(request.getEmail());
         }
 
-        return Mapper.converte(service.save(pacient), PacientResponse.class);
+        return Mapper.converte(service.save(pacient), PatientResponse.class);
 
     }
 
     @Override
-    public PacientResponse save(PacientRequest request) {
+    public PatientResponse save(PacientRequest request) {
         validateDatabaseEmailIntegrity(request.getEmail());
         Pacient pacient = createFullPacient(request);
 
-        return Mapper.converte(service.save(pacient), PacientResponse.class);
+        return Mapper.converte(service.save(pacient), PatientResponse.class);
     }
 
     private void validateDatabaseEmailIntegrity(String email){
