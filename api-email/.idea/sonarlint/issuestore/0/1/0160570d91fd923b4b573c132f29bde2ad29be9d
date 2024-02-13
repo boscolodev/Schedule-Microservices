@@ -1,0 +1,12 @@
+
+W
+java:S1854!":Remove this useless assignment to local variable "helper".(å‚ğ…8À½¥ôØ1
+\
+java:S1854("?Remove this useless assignment to local variable "htmlContent".(Çó¿ê8À½¥ôØ1
+H
+java:S1481!"+Remove this unused "helper" local variable.(å‚ğ…8Æ½¥ôØ1
+M
+java:S1481("0Remove this unused "htmlContent" local variable.(Çó¿ê8Ç½¥ôØ1
+G	java:S106+"+Replace this use of System.out by a logger.(ñš8È½¥ôØ1
+R
+java:S1144"0Remove this unused private "createEmail" method.(ÇÏ…‘ıÿÿÿÿ8ŒóÃóØ1

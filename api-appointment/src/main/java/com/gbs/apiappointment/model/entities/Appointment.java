@@ -7,7 +7,7 @@ import lombok.*;
 import java.io.Serial;
 import java.io.Serializable;
 
-import java.util.Date;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -34,10 +34,11 @@ public class Appointment implements Serializable {
     @Column(nullable = false)
     private Long patientId;
 
-    @Column(nullable = false)
-    private Date appointmentDate;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "calendar_id", referencedColumnName = "id")
+    private Calendar calendar;
 
     @Column(nullable = false)
-    private Long appointmentTime;
+    private String status;
 
 }

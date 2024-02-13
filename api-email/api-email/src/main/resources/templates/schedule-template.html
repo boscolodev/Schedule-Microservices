@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação de Consulta</title>
+</head>
+<body>
+<p>Olá <span th:text="${patientName}"></span>,</p>
+<p>Sua consulta com o <span th:text="${doctorName}"></span> foi agendada para o dia <span th:text="${#dates.format(appointmentDate, 'dd/MM/yyyy')}"></span> às <span th:text="${appointmentTime}"></span>.</p>
+
+<p>Dados da clínica:</p>
+<p>CEP: <span th:text="${clinicAddress.cep}"></span></p>
+<p>Logradouro: <span th:text="${clinicAddress.logradouro}"></span> nº: <span th:text="${clinicAddress.numero}"></span></p>
+<p>Complemento: <span th:text="${clinicAddress.complemento}"></span></p>
+<p>Bairro: <span th:text="${clinicAddress.bairro}"></span></p>
+<p>Cidade: <span th:text="${clinicAddress.localidade}"></span></p>
+<p>Observação: <span th:text="${clinicAddress.observacao}"></span></p>
+
+<p>Clique no link abaixo para confirmar a presença, caso a confirmação não seja realizada até 24 horas antes da consulta, a mesma será cancelada.</p>
+<a href="http://teste">Confirmar Presença</a>
+
+<hr>
+<p>GBS Software - Medic Schedule</p>
+<p>Sistemas de Agendamento Inteligente</p>
+<p>Contato: (19) 98112-0837</p>
+</body>
+</html>
