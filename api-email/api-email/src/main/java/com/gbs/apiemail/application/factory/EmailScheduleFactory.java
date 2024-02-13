@@ -1,6 +1,6 @@
 package com.gbs.apiemail.application.factory;
 
-import com.gbs.apiemail.api.dto.Email;
+import com.gbs.apiemail.api.dto.email.Email;
 import com.gbs.apiemail.application.interfaces.EmailStrategy;
 import org.thymeleaf.context.Context;
 

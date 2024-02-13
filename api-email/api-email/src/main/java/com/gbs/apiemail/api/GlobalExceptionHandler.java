@@ -1,11 +1,9 @@
-package com.gbs.apiappointment.api;
+package com.gbs.apiemail.api;
 
-import com.gbs.apiappointment.api.dto.ApiError;
-import com.gbs.apiappointment.api.dto.ValidationError;
-import com.gbs.apiappointment.shared.exceptions.DatabaseNotFoundException;
-import com.gbs.apiappointment.shared.exceptions.ProducerException;
-import com.gbs.apiappointment.shared.exceptions.RestException;
-import com.gbs.apiappointment.shared.utils.Mapper;
+import com.gbs.apiemail.api.dto.ApiError;
+import com.gbs.apiemail.shared.exceptions.ConsumerException;
+import com.gbs.apiemail.shared.exceptions.RestException;
+import com.gbs.apiemail.shared.utils.Mapper;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -22,18 +20,20 @@ import java.time.Instant;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(DatabaseNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ApiError databaseError(DatabaseNotFoundException e, HttpServletRequest request) {
-        log.warn("GlobalExceptionHandler::DatabaseNotFoundException", e);
+    @ExceptionHandler(ConsumerException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ApiError restClientException(ConsumerException e, HttpServletRequest request) {
+        log.warn("GlobalExceptionHandler::ConsumerException", e);
+
         return ApiError.builder()
-                .error("Resource not found")
+                .error("Rest Resource not found")
                 .message(e.getMessage())
                 .path(request.getRequestURI())
                 .timestamp(Instant.now())
-                .status(HttpStatus.NOT_FOUND.value())
+                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .build();
     }
+
     @ExceptionHandler(RestClientException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ApiError restClientException(RestClientException e, HttpServletRequest request) {
@@ -47,21 +47,6 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .build();
     }
-
-    @ExceptionHandler(ProducerException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ApiError restClientException(ProducerException e, HttpServletRequest request) {
-        log.warn("GlobalExceptionHandler::RestClientException", e);
-
-        return ApiError.builder()
-                .error("Erro ao processar mensagem do kafka")
-                .message(e.getMessage())
-                .path(request.getRequestURI())
-                .timestamp(Instant.now())
-                .status(HttpStatus.INTERNAL_SERVER_ERROR.value())
-                .build();
-    }
-
 
     @ExceptionHandler(RestException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)

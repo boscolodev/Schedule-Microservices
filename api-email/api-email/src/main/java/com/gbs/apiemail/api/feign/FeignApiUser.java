@@ -1,7 +1,7 @@
 package com.gbs.apiemail.api.feign;
 
-import com.gbs.apiemail.api.dto.DoctorResponse;
-import com.gbs.apiemail.api.dto.PatientResponse;
+import com.gbs.apiemail.api.dto.doctor.DoctorResponse;
+import com.gbs.apiemail.api.dto.patient.PatientResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

@@ -3,6 +3,7 @@ package com.gbs.apiappointment.api.controller;
 import com.gbs.apiappointment.api.dto.appointment.AppointmentRequest;
 import com.gbs.apiappointment.api.dto.appointment.AppointmentResponse;
 import com.gbs.apiappointment.application.usecase.AppointmentService;
+import com.gbs.apiappointment.infrastructure.message.producer.AppointmentProducer;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class AppointmentController {
 
     private final AppointmentService service;
+    private final AppointmentProducer producer;
 
     @GetMapping
     public Page<AppointmentResponse> findAll(final Pageable pageable) {
@@ -36,7 +38,9 @@ public class AppointmentController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public AppointmentResponse save(@RequestBody @Valid AppointmentRequest request) {
-        return service.save(request);
+        AppointmentResponse appointment = service.save(request);
+        producer.sendMail(appointment);
+        return appointment;
     }
 
     @PutMapping(value = "/{id}")

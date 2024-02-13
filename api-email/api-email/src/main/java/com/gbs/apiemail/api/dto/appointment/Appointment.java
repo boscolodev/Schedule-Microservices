@@ -1,4 +1,4 @@
-package com.gbs.apiemail.api.dto;
+package com.gbs.apiemail.api.dto.appointment;
 
 import jakarta.validation.constraints.NotNull;
 

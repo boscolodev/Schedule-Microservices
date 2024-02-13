@@ -1,5 +1,6 @@
-package com.gbs.apiemail.api.dto;
+package com.gbs.apiemail.api.dto.doctor;
 
+import com.gbs.apiemail.api.dto.address.AddressResponse;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;

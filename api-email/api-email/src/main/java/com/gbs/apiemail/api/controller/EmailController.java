@@ -1,7 +1,7 @@
 package com.gbs.apiemail.api.controller;
 
 import com.gbs.apiemail.application.service.EmailService;
-import com.gbs.apiemail.api.dto.Appointment;
+import com.gbs.apiemail.api.dto.appointment.Appointment;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

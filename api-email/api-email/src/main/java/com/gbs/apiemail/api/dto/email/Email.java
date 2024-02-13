@@ -1,5 +1,8 @@
-package com.gbs.apiemail.api.dto;
+package com.gbs.apiemail.api.dto.email;
 
+import com.gbs.apiemail.api.dto.appointment.Appointment;
+import com.gbs.apiemail.api.dto.doctor.DoctorResponse;
+import com.gbs.apiemail.api.dto.patient.PatientResponse;
 import com.gbs.apiemail.application.interfaces.EmailStrategy;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
