@@ -1,6 +1,6 @@
 package com.gbs.apiemail.application.service;
 
-import com.gbs.apiemail.api.dto.appointment.Appointment;
+import com.gbs.apiemail.api.dto.appointment.AppointmentResponse;
 import com.gbs.apiemail.api.dto.doctor.DoctorResponse;
 import com.gbs.apiemail.api.dto.email.Email;
 import com.gbs.apiemail.api.dto.patient.PatientResponse;
@@ -24,25 +24,25 @@ public class EmailService {
     private final FeignApiUser apiUser;
     private final EmailStrategyFactory factory;
 
-    public void sendMail(Appointment appointment, String strategyKey) {
+    public void sendMail(AppointmentResponse appointmentResponse, String strategyKey) {
 
         try {
-            mail.send(getEmail(appointment, strategyKey));
+            mail.send(getEmail(appointmentResponse, strategyKey));
         } catch (MessagingException e) {
             e.printStackTrace();
         }
     }
 
-    private MimeMessage getEmail(Appointment appointment, String strategyKey) throws MessagingException {
-        Email email = createEmailRecord(appointment);
+    private MimeMessage getEmail(AppointmentResponse appointmentResponse, String strategyKey) throws MessagingException {
+        Email email = createEmailRecord(appointmentResponse);
         EmailStrategy strategy = factory.getStrategy(strategyKey);
         return email.createEmailMessage(mail, strategy);
     }
 
-    private Email createEmailRecord(Appointment appointment) {
-        PatientResponse patient = apiUser.findPatientById(appointment.patientId());
-        DoctorResponse doctor = apiUser.findDoctorById(appointment.doctorId());
-        return new Email(patient, doctor, appointment);
+    private Email createEmailRecord(AppointmentResponse appointmentResponse) {
+        PatientResponse patient = apiUser.findPatientById(appointmentResponse.getPatientId());
+        DoctorResponse doctor = apiUser.findDoctorById(appointmentResponse.getDoctorId());
+        return new Email(patient, doctor, appointmentResponse);
     }
 
 

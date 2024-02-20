@@ -1,7 +1,7 @@
 package com.gbs.apiemail.api.controller;
 
 import com.gbs.apiemail.application.service.EmailService;
-import com.gbs.apiemail.api.dto.appointment.Appointment;
+import com.gbs.apiemail.api.dto.appointment.AppointmentResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,8 +17,8 @@ public class EmailController {
     private final EmailService service;
 
     @PostMapping
-    public void sendEmail(@Valid @RequestBody Appointment appointment) {
-        service.sendMail(appointment, appointment.department());
+    public void sendEmail(@Valid @RequestBody AppointmentResponse appointmentResponse) {
+        service.sendMail(appointmentResponse, appointmentResponse.getDepartment());
     }
 
 }

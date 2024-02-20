@@ -6,8 +6,6 @@ public class Mapper {
 
     private static ModelMapper modelMapper = null;
 
-
-
     private Mapper() {
     }
 

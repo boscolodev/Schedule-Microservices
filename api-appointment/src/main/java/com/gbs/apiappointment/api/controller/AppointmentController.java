@@ -37,7 +37,7 @@ public class AppointmentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AppointmentResponse save(@RequestBody @Valid AppointmentRequest request) {
+    public AppointmentResponse save(@RequestBody @Valid final AppointmentRequest request) {
         AppointmentResponse appointment = service.save(request);
         producer.sendMail(appointment);
         return appointment;

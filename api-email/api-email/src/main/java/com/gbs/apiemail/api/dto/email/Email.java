@@ -1,6 +1,6 @@
 package com.gbs.apiemail.api.dto.email;
 
-import com.gbs.apiemail.api.dto.appointment.Appointment;
+import com.gbs.apiemail.api.dto.appointment.AppointmentResponse;
 import com.gbs.apiemail.api.dto.doctor.DoctorResponse;
 import com.gbs.apiemail.api.dto.patient.PatientResponse;
 import com.gbs.apiemail.application.interfaces.EmailStrategy;
@@ -18,7 +18,7 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Slf4j
 public record Email(@Valid PatientResponse patient,
                     @Valid DoctorResponse doctor,
-                    @Valid Appointment appointment
+                    @Valid AppointmentResponse appointmentResponse
 ) {
     private String createEmailBody(EmailStrategy strategy){
 

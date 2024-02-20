@@ -1,5 +1,7 @@
 package com.gbs.apiemail.shared.utils;
 
+import org.modelmapper.ModelMapper;
+
 public class Mapper {
 
     private static ModelMapper modelMapper = null;

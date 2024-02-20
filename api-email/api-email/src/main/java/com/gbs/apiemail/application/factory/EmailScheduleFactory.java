@@ -17,8 +17,8 @@ public class EmailScheduleFactory implements EmailStrategy {
         Context context = new Context();
         context.setVariable("patientName", email.patient().name());
         context.setVariable("doctorName", email.doctor().name());
-        context.setVariable("appointmentDate", email.appointment().appointmentDate());
-        context.setVariable("appointmentTime", email.appointment().appointmentTime());
+        //context.setVariable("appointmentDate", email.appointmentResponse().getAppointmentDate());
+        context.setVariable("appointmentTime", email.appointmentResponse().getAppointmentTime());
         context.setVariable("clinicAddress", email.doctor().address());
 
         return context;
