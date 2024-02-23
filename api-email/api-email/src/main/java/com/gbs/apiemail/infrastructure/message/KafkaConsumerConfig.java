@@ -25,11 +25,11 @@ public class KafkaConsumerConfig {
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(ConsumerConfig.GROUP_ID_CONFIG, "schedule-service");
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ErrorHandlingDeserializer.class);
-        props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, AppointmentResponseDeserializer.class);
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
-        return new DefaultKafkaConsumerFactory<>(props, new StringDeserializer(), new ErrorHandlingDeserializer<>(new JsonDeserializer<>(AppointmentResponse.class)));
+        return new DefaultKafkaConsumerFactory<>(props);
     }
+
 
     @Bean
     public ConcurrentKafkaListenerContainerFactory<String, AppointmentResponse> kafkaListenerContainerFactory() {
@@ -38,3 +38,5 @@ public class KafkaConsumerConfig {
         return factory;
     }
 }
+
+

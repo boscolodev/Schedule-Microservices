@@ -75,3 +75,5 @@ Aapi-email/src/main/java/com/gbs/apiemail/shared/utils/Mapper.java,1\d\1db0bdf1
 Uapi-email/src/main/java/com/gbs/apiemail/api/dto/appointment/AppointmentResponse.java,b\3\b3089fbd803853d65560ef030b1e8cb42d60d498
 ˆ
 Xapi-email/src/main/java/com/gbs/apiemail/infrastructure/message/KafkaConsumerConfig.java,b\4\b4828314b523e746e59835160a9140f761defef2
+”
+dapi-email/src/main/java/com/gbs/apiemail/infrastructure/message/AppointmentResponseDeserializer.java,4\a\4a0680dbdbd009161e1228c2a7b221156b1357c9

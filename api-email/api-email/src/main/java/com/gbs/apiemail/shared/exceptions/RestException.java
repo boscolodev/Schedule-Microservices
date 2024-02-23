@@ -12,4 +12,5 @@ public class RestException extends RuntimeException{
 
     private final ApiError apiError;
 
+
 }

@@ -12,6 +12,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @ToString
+@EqualsAndHashCode
 public class AppointmentResponse implements Serializable {
 
     @Serial

@@ -1,5 +1,6 @@
 package com.gbs.apiemail.application.service;
 
+import com.gbs.apiemail.api.dto.ApiError;
 import com.gbs.apiemail.api.dto.appointment.AppointmentResponse;
 import com.gbs.apiemail.api.dto.doctor.DoctorResponse;
 import com.gbs.apiemail.api.dto.email.Email;
@@ -7,6 +8,7 @@ import com.gbs.apiemail.api.dto.patient.PatientResponse;
 import com.gbs.apiemail.api.feign.FeignApiUser;
 import com.gbs.apiemail.application.interfaces.EmailStrategy;
 import com.gbs.apiemail.application.factory.EmailStrategyFactory;
+import com.gbs.apiemail.shared.exceptions.RestException;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
@@ -40,9 +42,13 @@ public class EmailService {
     }
 
     private Email createEmailRecord(AppointmentResponse appointmentResponse) {
-        PatientResponse patient = apiUser.findPatientById(appointmentResponse.getPatientId());
-        DoctorResponse doctor = apiUser.findDoctorById(appointmentResponse.getDoctorId());
-        return new Email(patient, doctor, appointmentResponse);
+        try{
+            PatientResponse patient = apiUser.findPatientById(appointmentResponse.getPatientId());
+            DoctorResponse doctor = apiUser.findDoctorById(appointmentResponse.getDoctorId());
+            return new Email(patient, doctor, appointmentResponse);
+        }catch (RestException e){
+            throw new RuntimeException();
+        }
     }
 
 
